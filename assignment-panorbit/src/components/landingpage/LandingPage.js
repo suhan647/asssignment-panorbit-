@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../App.css'
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box'
@@ -7,13 +7,39 @@ import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
+import axios from 'axios'
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import {userId} from '../../redux/slices/IdSlice';
 
 
 function LandingPage() {
+
+  const [users, setUsers] = useState('')
+
+  const dispatch = useDispatch()
+
+
+  //users names and pictures
+  async function UsersList(){
+    try {
+      let data = await axios.get('https://panorbit.in/api/users.json')
+    // console.log(data.data.users);
+    setUsers(data.data.users)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    UsersList()
+  },[])
+
   return (
    <>
    <div className='background_img'>
   <div className='card_div'>
+
    <Card sx={{ width:'400px', borderRadius:'20px' }}>
       <CardContent>
 
@@ -26,59 +52,28 @@ function LandingPage() {
         <Box className='users_list'>
         <Stack direction="column" spacing={2}>
 
-      <span className='avatar'>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <p style={{padding:'15px'}}>Lean Graham</p>
-        </span>
+        {users ? users.map((user) => {
+          // dispatch(userId(user.id))
+          return (
+            <>
+            <NavLink className='link' to={`/profiledetails/${user.id}`}  onClick={() => dispatch(userId(user.id))} >
+            <span className='avatar' key={user.id}>
+             <Avatar alt="User Image" src={user.profilepicture} />
+             <p style={{padding:'15px'}}>{user.name}</p>
+           </span>
+           </NavLink>
         <Divider />
-
-        <span className='avatar'>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <p style={{padding:'15px'}}>Lean Graham</p>
-        </span>
-        <Divider />
-        
-        <span className='avatar'>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <p style={{padding:'15px'}}>Lean Graham</p>
-        </span>
-        <Divider />
-
-        <span className='avatar'>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <p style={{padding:'15px'}}>Lean Graham</p>
-        </span>
-        <Divider />
-
-        <span className='avatar'>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <p style={{padding:'15px'}}>Lean Graham</p>
-        </span>
-        <Divider />
-
-        <span className='avatar'>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <p style={{padding:'15px'}}>Lean Graham</p>
-        </span>
-        <Divider />
-
-        <span className='avatar'>
-        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        <p style={{padding:'15px'}}>Lean Graham</p>
-        </span>
-        <Divider />
-      
+            </>
+          );
+        }) :
+        <h3 style={{display:"flex", justifyContent:'center'}}>Loading ....</h3>}
+       
     </Stack>
         </Box>
-
-      </CardContent>
-      
+      </CardContent>  
     </Card>
     </div>
-
-
    </div>
-
    </>
   )
 }
