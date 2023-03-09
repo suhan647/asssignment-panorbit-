@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import ToggleUser from './ToggleUser'
 import { useSelector } from 'react-redux'
+import ChatBox from './chat/ChatBox'
 
 function ProfileDetails() {
 
@@ -204,7 +205,10 @@ function ProfileDetails() {
 
       </Box>
         </div>
-
+   
+   <Box>
+    <ChatBox/>
+   </Box>
       </Grid>
     </>
 }):<h1>Loading...</h1>}
