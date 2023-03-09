@@ -2,20 +2,25 @@ import React, { useEffect, useState } from 'react'
 import Sidebar from '../sidebar/SideBar'
 import '../../App.css'
 import { Avatar, Divider, Grid } from '@mui/material'
-import { Box, Stack } from '@mui/system'
+import { Box } from '@mui/system'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import ToggleUser from './ToggleUser'
+import { useSelector } from 'react-redux'
 
-function ProfileDetails1() {
+function ProfileDetails() {
 
   const [userDetails, setUserDetails] = useState('')
-  const {id} = useParams()
+  // const {id} = useParams()
+  const id = useSelector((state) => state.id.idofuser)
+
+  // localStorage.setItem('userid', id)
 
   async function getUserDetails() {
     try {
       let data = await axios.get('https://panorbit.in/api/users.json')
       let result = data.data.users.find((user) => user.id === parseInt(id))
-      console.log("result",result);
+      // console.log("result",result);
       setUserDetails([result]);
     } catch (error) {
       console.log(error);
@@ -25,7 +30,7 @@ function ProfileDetails1() {
 
   useEffect(() => {
     getUserDetails()
-  },[])
+  },[id])
 
   return (
     <>
@@ -140,10 +145,7 @@ function ProfileDetails1() {
 
       <Grid className='divider_container2' item xs={5} md={5} lg={5}>
       <Box className='map_section'>
-      <Stack direction="row" spacing={2} sx={{display:'flex', alignItems:'center', marginBottom:'20px'}} >
-      <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-      <Box>User Name</Box>
-      </Stack>
+      <ToggleUser/>
       </Box>
       <Divider  />
 
@@ -216,4 +218,4 @@ function ProfileDetails1() {
   )
 }
 
-export default ProfileDetails1
+export default ProfileDetails

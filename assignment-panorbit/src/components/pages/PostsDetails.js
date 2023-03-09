@@ -1,6 +1,7 @@
 import React from 'react'
-import { Avatar, Box, Divider, Grid, Stack } from '@mui/material'
+import {  Box, Divider, Grid } from '@mui/material'
 import SideBar from '../sidebar/SideBar'
+import ToggleUser from './ToggleUser'
 
 function PostsDetails() {
   return (
@@ -14,21 +15,25 @@ function PostsDetails() {
 
       <Grid className='divider_container'  item xs={4} md={4} lg={4}>
         <div style={{marginBottom:'20px'}}>
-     <b className='heading' >Profile</b>
+     <b className='heading' >Posts</b>
      </div>
      <Divider  />
       </Grid>
 
       <Grid className='divider_container2' item xs={5} md={5} lg={5}>
       <Box className='map_section'>
-      <Stack direction="row" spacing={2} sx={{display:'flex', alignItems:'center', marginBottom:'20px'}} >
-      <Avatar sx={{ width: 24, height: 24 }} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-      <Box>User Name</Box>
-      </Stack>
+      <ToggleUser/>
       </Box>
       <Divider  />
-      </Grid>
 
+      {/* <Grid item item xs={2} md={2} lg={2}> */}
+      <Box sx={{display:"flex", alignItems:'center', mt:"200px", fontSize:"30px",p:'0px',ml:'0px', color:'grey'}}>
+        <h1>Coming Soon</h1>
+      </Box>
+
+      {/* </Grid> */}
+
+      </Grid> 
     </Grid>
 
     </>

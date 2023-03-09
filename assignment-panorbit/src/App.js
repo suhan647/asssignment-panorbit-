@@ -13,9 +13,9 @@ function App() {
    <Routes>
     <Route path='/' element={<LandingPage />} />
     <Route path='/profiledetails/:id' element={<ProfileDetails />} />
-    <Route path='/postdetails' element={<PostsDetails />} />
-    <Route path='/gallery' element={<GalleryScreen />} />
-    <Route path='/todo' element={<ToDoScreen />} />
+    <Route path='/postdetails/:id' element={<PostsDetails />} />
+    <Route path='/gallery/:id' element={<GalleryScreen />} />
+    <Route path='/todo/:id' element={<ToDoScreen />} />
    </Routes>
 
    </>

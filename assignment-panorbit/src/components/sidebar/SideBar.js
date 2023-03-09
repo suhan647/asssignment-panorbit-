@@ -30,17 +30,17 @@ function SideBar() {
                   <Divider color='#D3D3D3' variant="inset"/>
 
                   <Typography className='contents' activeclassname='active'>
-                    <NavLink to='/postdetails' className='sidebar_link'>Posts </NavLink>
+                    <NavLink to={`/postdetails/${id}`} className='sidebar_link'>Posts </NavLink>
                   </Typography>
                   <Divider color='#D3D3D3' variant="inset"/>
 
                   <Typography className='contents' activeclassname='active'>
-                    <NavLink to='/gallery' className='sidebar_link'>Gallery </NavLink>
+                    <NavLink to={`/gallery/${id}`} className='sidebar_link'>Gallery </NavLink>
                   </Typography>
                   <Divider color='#D3D3D3' variant="inset"/>
 
                   <Typography className='contents' activeclassname='active'>
-                    <NavLink to='/todo' className='sidebar_link'>ToDo </NavLink>
+                    <NavLink to={`/todo/${id}`} className='sidebar_link'>ToDo </NavLink>
                   </Typography>
                   <Divider color='#D3D3D3' variant="inset"/>
 
