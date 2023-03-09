@@ -2,6 +2,7 @@ import React from 'react'
 import {  Box, Divider, Grid } from '@mui/material'
 import SideBar from '../sidebar/SideBar'
 import ToggleUser from './ToggleUser'
+import ChatBox from './chat/ChatBox'
 
 function ToDoScreen() {
   return (
@@ -32,7 +33,7 @@ function ToDoScreen() {
 
 </Grid>
 
-
+  <ChatBox />
 </Grid>
 
 

@@ -2,6 +2,7 @@ import React from 'react'
 import {  Box, Divider, Grid } from '@mui/material'
 import SideBar from '../sidebar/SideBar'
 import ToggleUser from './ToggleUser'
+import ChatBox from './chat/ChatBox'
 
 function PostsDetails() {
   return (
@@ -26,14 +27,12 @@ function PostsDetails() {
       </Box>
       <Divider  />
 
-      {/* <Grid item item xs={2} md={2} lg={2}> */}
       <Box sx={{display:"flex", alignItems:'center', mt:"200px", fontSize:"30px",p:'0px',ml:'0px', color:'grey'}}>
         <h1>Coming Soon</h1>
       </Box>
-
-      {/* </Grid> */}
-
       </Grid> 
+
+      <ChatBox/>
     </Grid>
 
     </>

@@ -205,10 +205,9 @@ function ProfileDetails() {
 
       </Box>
         </div>
-   
-   <Box>
+
     <ChatBox/>
-   </Box>
+    
       </Grid>
     </>
 }):<h1>Loading...</h1>}

@@ -24,7 +24,6 @@ function LandingPage() {
   async function UsersList(){
     try {
       let data = await axios.get('https://panorbit.in/api/users.json')
-    // console.log(data.data.users);
     setUsers(data.data.users)
     } catch (error) {
       console.log(error);

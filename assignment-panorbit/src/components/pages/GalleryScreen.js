@@ -1,6 +1,7 @@
 import {  Box, Divider, Grid } from '@mui/material'
 import React from 'react'
 import SideBar from '../sidebar/SideBar'
+import ChatBox from './chat/ChatBox'
 import ToggleUser from './ToggleUser'
 
 function GalleryScreen() {
@@ -32,7 +33,7 @@ function GalleryScreen() {
 
 </Grid>
 
-
+<ChatBox/>
 </Grid>
 
     </>
