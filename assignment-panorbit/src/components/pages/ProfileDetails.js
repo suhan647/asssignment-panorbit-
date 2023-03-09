@@ -4,10 +4,9 @@ import '../../App.css'
 import { Avatar, Divider, Grid } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import axios from 'axios'
-// import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-function ProfileDetails() {
+function ProfileDetails1() {
 
   const [userDetails, setUserDetails] = useState('')
   const {id} = useParams()
@@ -36,8 +35,10 @@ function ProfileDetails() {
       <Sidebar />
       </Grid>
 
-
-      <Grid className='divider_container'  item xs={4} md={4} lg={4}>
+{ userDetails ? userDetails.map((user) => {
+    return <>
+    
+    <Grid className='divider_container'  item xs={4} md={4} lg={4}>
         <div style={{marginBottom:'20px'}}>
      <b className='heading' >Profile</b>
      </div>
@@ -46,8 +47,6 @@ function ProfileDetails() {
 
 {/* personnel Details Section */}
 
-    {userDetails ? (userDetails.map((user) => {
-          return(
             <div>
              <Box className='userdetails' sx={{marginTop:'10px'}}>
      <Avatar
@@ -136,16 +135,9 @@ function ProfileDetails() {
       </Grid>
       </Box>
             </div>
-          );
-    })): (<h1>Loading....</h1>)}
-
-    
       </Grid>
-      
+    
 
-
-
-     {/* Address Section */}
       <Grid className='divider_container2' item xs={5} md={5} lg={5}>
       <Box className='map_section'>
       <Stack direction="row" spacing={2} sx={{display:'flex', alignItems:'center', marginBottom:'20px'}} >
@@ -155,8 +147,7 @@ function ProfileDetails() {
       </Box>
       <Divider  />
 
-    {userDetails? userDetails.map((user) => {
-      return(
+   {/* Address Section */}
         <div style={{marginLeft:'20px'}}>
         
         <Box>
@@ -201,7 +192,7 @@ function ProfileDetails() {
       </Grid>
 
       <div style={{border:'10px solid white', borderRadius:'10px'}}>
-        <img style={{ borderRadius:'10px'}} src='https://www.google.com/maps/d/thumbnail?mid=1qJTcq5CaMdI4s4mNWp9Mi7QpJHQ&hl=en' height='250px' width='450px' />
+        <img style={{ borderRadius:'10px'}} src='https://www.google.com/maps/d/thumbnail?mid=1qJTcq5CaMdI4s4mNWp9Mi7QpJHQ&hl=en' alt={user.name} height='250px' width='450px' />
       </div>
 
       <div style={{display:'flex', justifyContent:'flex-end'}}>
@@ -211,10 +202,10 @@ function ProfileDetails() {
 
       </Box>
         </div>
-      );
-    }) : <h1>Loading...</h1>}
 
       </Grid>
+    </>
+}):<h1>Loading...</h1>}
 
     </Grid>
 
@@ -225,4 +216,4 @@ function ProfileDetails() {
   )
 }
 
-export default ProfileDetails
+export default ProfileDetails1
